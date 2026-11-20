@@ -1,4 +1,9 @@
 import { CateringProduct, BoxFillingItem, PromptTemplate, TrackedOrder } from '../types/catering';
+import heroSpreadImg from '../assets/images/hero_catering_spread_1792163979418.jpg';
+import savorySandwichesImg from '../assets/images/savory_mini_sandwiches_1792163979678.jpg';
+import frenchGateauxImg from '../assets/images/french_mini_gateaux_1792163979934.jpg';
+import eventFavorsImg from '../assets/images/event_giveaway_boxes_1792163980574.jpg';
+import soloMealBoxImg from '../assets/images/solo_meal_box_1792165904791.jpg';
 
 // Official Published & Shared App URL
 export const PUBLISHED_URL = 'https://ais-pre-woawfqptmsjdgpwbwt7wjn-808303190286.europe-west2.run.app';
@@ -10,14 +15,27 @@ export const PUBLISH_DETAILS = {
   shareMessage: 'تفضل بزيارة متجر «بَهْجَة» لتوزيعات وضيافة المناسبات الفاخرة (بوكسات ميني ساندوتش، جاتوهات فرنسية، وبوكسات فردية متكاملة لكل ضيف): ' + PUBLISHED_URL,
 };
 
-// Generated high-fidelity images
+// Bundled high-fidelity images (Vite resolves static imports cleanly in both dev and production builds like Vercel)
 export const IMAGES = {
-  hero: '/src/assets/images/hero_catering_spread_1792163979418.jpg',
-  savory: '/src/assets/images/savory_mini_sandwiches_1792163979678.jpg',
-  gateaux: '/src/assets/images/french_mini_gateaux_1792163979934.jpg',
-  favors: '/src/assets/images/event_giveaway_boxes_1792163980574.jpg',
-  solo: '/src/assets/images/solo_meal_box_1792165904791.jpg',
+  hero: heroSpreadImg,
+  savory: savorySandwichesImg,
+  gateaux: frenchGateauxImg,
+  favors: eventFavorsImg,
+  solo: soloMealBoxImg,
 };
+
+const LEGACY_IMAGE_PATH_MAP: Record<string, string> = {
+  '/src/assets/images/hero_catering_spread_1792163979418.jpg': IMAGES.hero,
+  '/src/assets/images/savory_mini_sandwiches_1792163979678.jpg': IMAGES.savory,
+  '/src/assets/images/french_mini_gateaux_1792163979934.jpg': IMAGES.gateaux,
+  '/src/assets/images/event_giveaway_boxes_1792163980574.jpg': IMAGES.favors,
+  '/src/assets/images/solo_meal_box_1792165904791.jpg': IMAGES.solo,
+};
+
+export function normalizeLegacyImagePath(imageUrl?: string): string {
+  if (!imageUrl) return IMAGES.solo;
+  return LEGACY_IMAGE_PATH_MAP[imageUrl] || imageUrl;
+}
 
 export const CATERING_PRODUCTS: CateringProduct[] = [
   {

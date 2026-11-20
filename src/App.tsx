@@ -26,7 +26,7 @@ import {
   CateringProduct,
   EGiftCardRecord
 } from './types/catering';
-import { INITIAL_ORDERS, CATERING_PRODUCTS } from './data/cateringData';
+import { INITIAL_ORDERS, CATERING_PRODUCTS, normalizeLegacyImagePath } from './data/cateringData';
 import { createActivityLogEntry, ensureOrderActivityLog, formatActivityTimestamp, getOrderStatusLabel } from './utils/orderActivity';
 
 const DEFAULT_GIFT_CARD_RECORDS: EGiftCardRecord[] = [
@@ -181,7 +181,10 @@ export default function App() {
             }
           }
 
-          return nextList;
+          return nextList.map((item: CateringProduct) => ({
+            ...item,
+            image: normalizeLegacyImagePath(item.image),
+          }));
         }
       }
       localStorage.setItem('bahjah_weekly_deals_seeded', '1');
@@ -270,12 +273,16 @@ export default function App() {
         if (Array.isArray(parsed) && parsed.length > 0) {
           const initialByNum = new Map(INITIAL_ORDERS.map(o => [o.orderNumber, o]));
           const hydrated = parsed.map((o: TrackedOrder) => {
-            if (o.activityLog && o.activityLog.length > 0) return o;
-            const initialMatch = initialByNum.get(o.orderNumber);
+            const normalizedItems = Array.isArray(o.items)
+              ? o.items.map(it => ({ ...it, image: normalizeLegacyImagePath(it.image) }))
+              : o.items;
+            const orderWithImgs = { ...o, items: normalizedItems };
+            if (orderWithImgs.activityLog && orderWithImgs.activityLog.length > 0) return orderWithImgs;
+            const initialMatch = initialByNum.get(orderWithImgs.orderNumber);
             if (initialMatch?.activityLog) {
-              return { ...o, activityLog: initialMatch.activityLog };
+              return { ...orderWithImgs, activityLog: initialMatch.activityLog };
             }
-            return { ...o, activityLog: ensureOrderActivityLog(o) };
+            return { ...orderWithImgs, activityLog: ensureOrderActivityLog(orderWithImgs) };
           });
           const existingNumbers = new Set(hydrated.map((o: TrackedOrder) => o.orderNumber));
           const missingInitial = INITIAL_ORDERS.filter(o => !existingNumbers.has(o.orderNumber));

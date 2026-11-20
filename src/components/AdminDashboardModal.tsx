@@ -372,7 +372,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                       type="text"
                       value={editingProduct.image}
                       onChange={(e) => setEditingProduct({ ...editingProduct, image: e.target.value })}
-                      placeholder="https://... أو /src/assets/..."
+                      placeholder="https://... أو اختر من الصور الجاهزة بالأسفل"
                       dir="ltr"
                       className="w-full text-xs px-3 py-2 rounded-xl border border-[#D9CCC2] bg-[#FAF7F5] focus:bg-white focus:border-[#B85333] outline-none font-mono"
                     />
