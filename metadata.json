@@ -1,0 +1,8 @@
+{
+  "name": "Remix بهجة - توزيعات وضيافة المناسبات الفاخرة",
+  "description": "تطبيق الكتروني متكامل لمشروع بيع وتنسيق توزيعات المناسبات من ميني ساندوتشات وجاتوهات فرنسية وعلب هدايا مخصصة مع صانع البرومبتات الاحترافية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

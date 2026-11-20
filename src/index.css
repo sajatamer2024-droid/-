@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #FAF6F0;
+    color: #231815;
+  }
+
+  /* Refined tabular numerals for all prices and counts */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom subtle animations and joyful flourishes */
+@keyframes festiveGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(184, 83, 51, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(217, 119, 54, 0.4);
+  }
+}
+
+.festive-glow {
+  animation: festiveGlow 3s ease-in-out infinite;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4ECE3;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9C8BA;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B85333;
+}

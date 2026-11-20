@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF0E6" />
+      <stop offset="50%" stop-color="#F2DCD0" />
+      <stop offset="100%" stop-color="#E5BEAC" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97736" />
+      <stop offset="100%" stop-color="#B85333" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8B3" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#5A2518" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Outer Elegant Border -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="url(#primaryGrad)" stroke-width="4" stroke-opacity="0.3" />
+
+  <!-- Central Celebration Box Graphic -->
+  <g filter="url(#shadow)">
+    <!-- Main Box Body -->
+    <rect x="116" y="180" width="280" height="220" rx="28" fill="url(#primaryGrad)" />
+    
+    <!-- Box Lid -->
+    <rect x="100" y="152" width="312" height="56" rx="16" fill="#9E4327" />
+    <rect x="106" y="158" width="300" height="20" rx="8" fill="#B85333" fill-opacity="0.6" />
+
+    <!-- Ribbon Vertical -->
+    <rect x="236" y="152" width="40" height="248" fill="url(#goldGrad)" />
+
+    <!-- Ribbon Horizontal -->
+    <rect x="116" y="270" width="280" height="36" fill="url(#goldGrad)" />
+
+    <!-- Ribbon Bow Knot Top -->
+    <circle cx="256" cy="148" r="18" fill="#FFF2D6" />
+    <path d="M256 148 C 220 110, 170 120, 200 156 C 220 170, 250 155, 256 148 Z" fill="url(#goldGrad)" />
+    <path d="M256 148 C 292 110, 342 120, 312 156 C 292 170, 262 155, 256 148 Z" fill="url(#goldGrad)" />
+  </g>
+
+  <!-- Sparkles -->
+  <path d="M120 110 Q 135 110 135 95 Q 135 110 150 110 Q 135 110 135 125 Q 135 110 120 110 Z" fill="#D97736" />
+  <path d="M370 100 Q 382 100 382 88 Q 382 100 394 100 Q 382 100 382 112 Q 382 100 370 100 Z" fill="#D4AF37" />
+  <path d="M395 380 Q 405 380 405 370 Q 405 380 415 380 Q 405 380 405 390 Q 405 380 395 380 Z" fill="#D97736" />
+
+  <!-- Arabic Typography "بهجة" inside ribbon or on top -->
+  <text x="256" y="450" font-family="'Cairo', system-ui, sans-serif" font-size="44" font-weight="900" fill="#231815" text-anchor="middle" letter-spacing="2">
+    بَهْجَة
+  </text>
+  <text x="256" y="478" font-family="'Cairo', system-ui, sans-serif" font-size="16" font-weight="700" fill="#7A4E3E" text-anchor="middle">
+    ضيافة وتوزيعات فاخرة
+  </text>
+</svg>
